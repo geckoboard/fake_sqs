@@ -27,6 +27,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "faraday"
   gem.add_development_dependency "thin"
   gem.add_development_dependency "verbose_hash_fetch"
-  gem.add_development_dependency "activesupport"
+  gem.add_development_dependency "activesupport", "~> 4.0"
 
 end
