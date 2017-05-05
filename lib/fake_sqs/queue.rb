@@ -53,10 +53,15 @@ module FakeSQS
 
     def receive_message(options = {})
       amount = Integer options.fetch("MaxNumberOfMessages") { "1" }
+      wait_time_seconds = Integer options.fetch("WaitTimeSeconds") { "0" }
 
       fail ReadCountOutOfRange, amount if amount > 10
 
-      return {} if @messages.empty?
+      # Emulate wait time
+      if @messages.empty?
+        sleep(wait_time_seconds)
+        return {}
+      end
 
       result = {}
 
